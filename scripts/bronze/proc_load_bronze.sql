@@ -30,10 +30,10 @@ BEGIN
         PRINT ('---------------------------');
 
         SET @start_time = GETDATE();
-        PRINT ('>> Truncating table: bronze.crm_customer_info');
-        TRUNCATE TABLE bronze.crm_customer_info;
-        PRINT ('>> Inserting into table: bronze.crm_customer_info');
-        BULK INSERT bronze.crm_customer_info
+        PRINT ('>> Truncating table: bronze.crm_cust_info');
+        TRUNCATE TABLE bronze.crm_cust_info;
+        PRINT ('>> Inserting into table: bronze.crm_cust_info');
+        BULK INSERT bronze.crm_cust_info
         From '/var/opt/mssql/data/SQL DWH datasets/source_crm/cust_info.csv'
         With (
             Firstrow = 2,
@@ -42,14 +42,14 @@ BEGIN
         );
         SET @end_time = GETDATE();
 
-        PRINT ('Load Duration for bronze.crm_customer_info:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
+        PRINT ('Load Duration for bronze.crm_cust_info:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
         PRINT ('>> ---------------------------');
 
         SET @start_time = GETDATE();
-        PRINT ('>> Truncating table: bronze.crm_product_info');
-        TRUNCATE TABLE bronze.crm_product_info;
-        PRINT ('>> Inserting into table: bronze.crm_product_info');
-        BULK INSERT bronze.crm_product_info
+        PRINT ('>> Truncating table: bronze.crm_prd_info');
+        TRUNCATE TABLE bronze.crm_prd_info;
+        PRINT ('>> Inserting into table: bronze.crm_prd_info');
+        BULK INSERT bronze.crm_prd_info
         From '/var/opt/mssql/data/SQL DWH datasets/source_crm/prd_info.csv'
         With (
             Firstrow = 2,
@@ -58,14 +58,14 @@ BEGIN
         );
         SET @end_time = GETDATE();
 
-        PRINT ('Load Duration for bronze.crm_product_info:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
+        PRINT ('Load Duration for bronze.crm_prd_info:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
         PRINT ('>> ---------------------------');
 
         SET @start_time = GETDATE();
-        PRINT ('>> Truncating table: bronze.crm_sales_info');
-        TRUNCATE TABLE bronze.crm_sales_info;
-        PRINT ('>> Inserting into table: bronze.crm_sales_info');
-        BULK INSERT bronze.crm_sales_info
+        PRINT ('>> Truncating table: bronze.crm_sales_details');
+        TRUNCATE TABLE bronze.crm_sales_details;
+        PRINT ('>> Inserting into table: bronze.crm_sales_details');
+        BULK INSERT bronze.crm_sales_details
         From '/var/opt/mssql/data/SQL DWH datasets/source_crm/sales_details.csv'
         With (
             Firstrow = 2,
@@ -74,17 +74,17 @@ BEGIN
         );
         SET @end_time = GETDATE();
 
-        PRINT ('Load Duration for bronze.crm_sales_info:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
+        PRINT ('Load Duration for bronze.crm_sales_details:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
 
         PRINT ('---------------------------');
         PRINT ('Loading ERP Tables');
         PRINT ('---------------------------');
 
         SET @start_time = GETDATE();
-        PRINT ('>> Truncating table: bronze.erp_customer_az12');
-        TRUNCATE TABLE bronze.erp_customer_az12;
-        PRINT ('>> Inserting into table: bronze.erp_customer_az12');
-        BULK INSERT bronze.erp_customer_az12
+        PRINT ('>> Truncating table: bronze.erp_cust_az12');
+        TRUNCATE TABLE bronze.erp_cust_az12;
+        PRINT ('>> Inserting into table: bronze.erp_cust_az12');
+        BULK INSERT bronze.erp_cust_az12
         From '/var/opt/mssql/data/SQL DWH datasets/source_erp/CUST_AZ12.csv'
         With (
             Firstrow = 2,
@@ -93,14 +93,14 @@ BEGIN
         );
         SET @end_time = GETDATE();
 
-        PRINT ('Load Duration for bronze.erp_customer_az12:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
+        PRINT ('Load Duration for bronze.erp_cust_az12:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
         PRINT ('>> ---------------------------');
 
         SET @start_time = GETDATE();
-        PRINT ('>> Truncating table: bronze.erp_location_a101');
-        TRUNCATE TABLE bronze.erp_location_a101;
-        PRINT ('>> Inserting into table: bronze.erp_location_a101');
-        BULK INSERT bronze.erp_location_a101
+        PRINT ('>> Truncating table: bronze.erp_loc_a101');
+        TRUNCATE TABLE bronze.erp_loc_a101;
+        PRINT ('>> Inserting into table: bronze.erp_loc_a101');
+        BULK INSERT bronze.erp_loc_a101
         From '/var/opt/mssql/data/SQL DWH datasets/source_erp/LOC_A101.csv'
         With (
             Firstrow = 2,
@@ -109,7 +109,7 @@ BEGIN
         );
         SET @end_time = GETDATE();
 
-        PRINT ('Load Duration for bronze.erp_location_a101:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
+        PRINT ('Load Duration for bronze.erp_loc_a101:' + CAST (DATEDIFF(second, @start_time, @end_time) AS NVARCHAR) + ' seconds');
         PRINT ('>> ---------------------------');
 
         SET @start_time = GETDATE();
